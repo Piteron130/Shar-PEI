@@ -1,23 +1,73 @@
 * {
     margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif
 }
 
-h1 {
+body {
+    background: url('https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-52379.jpg?w=826&t=st=1681877835~exp=1681878435~hmac=52911a3a7953e88ec970017aeb52db7a1385489266c5add046910a3b46872010') no-repeat;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.logo {
+    position: fixed;
+    font-size: 2em;
+    color: white;
+    user-select: none;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, rgb(0, 217, 255), rgb(0, 0, 128));
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform: scaleX(1);
+}
+
+#Nome {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
+#Titulo {
     text-align: center;
-    border: 10px solid orange;
-    background-color: coral;
-    color: red;
+    margin: 0;
+    padding: 2%;
+    color: white;
+    background: linear-gradient(to right, rgb(0, 89, 255), rgb(0, 0, 128));
     font-size: 50px;
     font-family: 'Times New Roman', Times, serif;
-}
-
-h2 {
-    color: blue;
-    margin-left: 45px;
-}
-
-pre {
-    color: darkgreen;
 }
 
 body {
@@ -30,11 +80,6 @@ body {
 
 #nosotros {
     margin-left: 600px;
-}
-
-.justificar {
-    text-align: justify;
-    font-size: 15px;
 }
 
 .box {
