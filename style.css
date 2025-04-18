@@ -1,0 +1,499 @@
+/* 
+=================================================
+SHAR PEI CLUB ARGENTINO - ENHANCED STYLESHEET
+=================================================
+*/
+
+/* Base CSS Reset & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: #1a52a3;
+    --secondary-color: #0099ff;
+    --accent-color: #4c7dff;
+    --light-bg: #f8f9fa;
+    --dark-bg: #13304f;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+}
+
+/* General Body Styling */
+body {
+    background: linear-gradient(to right, var(--dark-bg), var(--primary-color));
+    min-height: 100vh;
+    color: #333;
+    background-size: cover;
+    background-position: center;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Header Styling */
+.site-header {
+    padding: 20px 0;
+    background-color: rgba(19, 48, 79, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 80px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.fci-logo {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70px;
+}
+
+.fca-logo {
+    position: absolute;
+    left: 120px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70px;
+}
+
+.header-titles {
+    text-align: center;
+}
+
+#Titulo {
+    margin: 0;
+    color: white;
+    font-size: 46px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#SubTitulo {
+    color: var(--secondary-color);
+    font-size: 24px;
+    margin-top: 5px;
+    font-weight: 500;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Navigation */
+.navigation {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navigation a {
+    color: #ffffff;
+    font-weight: 500;
+    margin: 0 20px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    text-decoration: none;
+}
+
+.navigation a i {
+    margin-right: 8px;
+}
+
+.navigation a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--secondary-color);
+}
+
+.navigation a.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.navigation a.active:hover {
+    background-color: var(--accent-color);
+}
+
+/* Main Content */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Affiliation Banner */
+.affiliation-banner {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.affiliation-banner h4 {
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Section Styling */
+section {
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-size: 28px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+    text-align: center;
+}
+
+/* Welcome Section */
+.welcome-section {
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.95), rgba(240, 240, 240, 0.95));
+}
+
+.welcome-text {
+    text-align: justify;
+    color: #333;
+}
+
+.welcome-text p {
+    margin-bottom: 15px;
+}
+
+.celebration {
+    text-align: center;
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-top: 25px;
+}
+
+/* Ranking Section */
+.ranking-section {
+    background: linear-gradient(to bottom, rgba(26, 82, 163, 0.9), rgba(19, 48, 79, 0.9));
+    color: white;
+}
+
+.ranking-section .section-title {
+    color: white;
+    border-bottom-color: var(--secondary-color);
+}
+
+.ranking-card {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 25px;
+}
+
+.ranking-image {
+    flex: 0 0 200px;
+    text-align: center;
+}
+
+.ranking-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 3px solid var(--secondary-color);
+}
+
+.ranking-content {
+    flex: 1;
+}
+
+.ranking-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: var(--warning-color);
+}
+
+.dog-name {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.badge {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.dog-description p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.breeders {
+    font-style: italic;
+    color: var(--warning-color);
+}
+
+/* Location Section */
+.location-section {
+    background-color: white;
+}
+
+.contact-card {
+    padding: 25px;
+    height: 100%;
+}
+
+.contact-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 22px;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+.contact-card p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.contact-card i {
+    color: var(--secondary-color);
+    margin-right: 10px;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.facebook-btn {
+    background-color: #3b5998;
+}
+
+.instagram-btn {
+    background-color: #e1306c;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.map-container {
+    height: 100%;
+    min-height: 350px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+}
+
+/* Call to Action Section */
+.cta-section {
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    color: white;
+    text-align: center;
+    padding: 40px 30px;
+}
+
+.cta-section h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Enhanced Button */
+.shadow__btn {
+    padding: 12px 25px;
+    border: none;
+    font-size: 17px;
+    color: #fff;
+    border-radius: 7px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: 0.5s;
+    display: inline-block;
+    background: var(--secondary-color);
+    box-shadow: 0 0 25px var(--secondary-color);
+    text-decoration: none;
+}
+
+.shadow__btn:hover {
+    box-shadow: 0 0 5px var(--secondary-color),
+                0 0 25px var(--secondary-color),
+                0 0 50px var(--secondary-color),
+                0 0 100px var(--secondary-color);
+    color: white;
+    transform: translateY(-5px);
+}
+
+/* Footer */
+.footer_section {
+    background: radial-gradient(circle, rgb(101, 114, 255) 0%, rgb(19, 79, 148) 100%);
+    padding: 25px 0;
+    color: #ffffff;
+}
+
+.footer_section p {
+    margin: 0;
+    text-align: center;
+}
+
+.footer_section a {
+    color: rgb(247, 226, 250);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer_section a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .ranking-card {
+        flex-direction: column;
+    }
+    
+    .ranking-image {
+        flex: 0 0 auto;
+        margin-bottom: 20px;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo, .fci-logo, .fca-logo {
+        position: static;
+        transform: none;
+        width: 60px;
+        margin: 0 10px;
+    }
+    
+    .header-container {
+        flex-direction: column;
+    }
+    
+    .header-titles {
+        margin-top: 20px;
+    }
+    
+    #Titulo {
+        font-size: 36px;
+    }
+    
+    #SubTitulo {
+        font-size: 20px;
+    }
+    
+    .navigation {
+        flex-wrap: wrap;
+    }
+    
+    .navigation a {
+        margin: 5px;
+    }
+    
+    section {
+        padding: 20px;
+    }
+    
+    .celebration {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .social-buttons {
+        flex-direction: column;
+    }
+    
+    .social-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    #Titulo {
+        font-size: 28px;
+    }
+    
+    #SubTitulo {
+        font-size: 18px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .dog-name {
+        font-size: 22px;
+    }
+    
+    .navigation a {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+}

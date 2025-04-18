@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador - Shar Pei Club Argentino</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Admin-specific styles that complement the main style.css */
+        .admin-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .admin-title {
+            color: var(--primary-color);
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-tabs {
+            border-bottom: 2px solid var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .admin-tabs .nav-link {
+            color: var(--dark-bg);
+            border: none;
+            margin-right: 5px;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .admin-tabs .nav-link:hover {
+            background-color: rgba(0, 153, 255, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        .admin-tabs .nav-link.active {
+            background-color: var(--secondary-color);
+            color: white;
+            border-bottom: none;
+        }
+        
+        .admin-section {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .admin-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .btn-action {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-info {
+            color: white;
+            background-color: var(--info-color);
+            border-color: var(--info-color);
+        }
+        
+        .btn-danger {
+            background-color: var(--danger-color);
+            border-color: var(--danger-color);
+        }
+        
+        #formulario-socios {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        #formulario-titulo {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .table thead th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 12px;
+            border: none;
+        }
+        
+        .table tbody td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: middle;
+        }
+        
+        .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .table tbody tr:nth-child(even) {
+            background-color: rgba(0, 153, 255, 0.05);
+        }
+        
+        .table tbody tr:hover {
+            background-color: rgba(0, 153, 255, 0.1);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--secondary-color);
+            transform: translateX(-5px);
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.25rem rgba(0, 153, 255, 0.25);
+        }
+        
+        .alert {
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .admin-container {
+                margin: 15px;
+                padding: 15px;
+            }
+            
+            .admin-title {
+                font-size: 26px;
+            }
+            
+            .admin-tabs .nav-link {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+            
+            .admin-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header similar al del sitio principal -->
+    <header class="site-header">
+        <div class="header-container">
+            <img src="fts/logo.png" alt="Logo Shar Pei Club Argentino" class="logo">
+            <div class="header-titles">
+                <h1 id="Titulo">Shar Pei Club Argentino</h1>
+                <h2 id="SubTitulo">Panel de Administración</h2>
+            </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/FCI_logo.svg/1200px-FCI_logo.svg.png" alt="FCI Logo" class="fci-logo">
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="admin-container">
+            <div class="affiliation-banner">
+                <h4><i class="fas fa-shield-alt"></i> Sistema de Administración - Acceso Restringido</h4>
+            </div>
+            
+            <ul class="nav nav-tabs admin-tabs" id="adminTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="socios-tab" data-bs-toggle="tab" data-bs-target="#socios" type="button" role="tab" aria-controls="socios" aria-selected="true">
+                        <i class="fas fa-users"></i> Gestión de Socios
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="actividades-tab" data-bs-toggle="tab" data-bs-target="#actividades" type="button" role="tab" aria-controls="actividades" aria-selected="false">
+                        <i class="fas fa-calendar-alt"></i> Actividades
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="noticias-tab" data-bs-toggle="tab" data-bs-target="#noticias" type="button" role="tab" aria-controls="noticias" aria-selected="false">
+                        <i class="fas fa-newspaper"></i> Noticias
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="config-tab" data-bs-toggle="tab" data-bs-target="#config" type="button" role="tab" aria-controls="config" aria-selected="false">
+                        <i class="fas fa-cog"></i> Configuración
+                    </button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="adminTabContent">
+                <!-- Tab de Socios -->
+                <div class="tab-pane fade show active" id="socios" role="tabpanel" aria-labelledby="socios-tab">
+                    <div class="admin-section">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2><i class="fas fa-users"></i> Gestión de Socios</h2>
+                            <button class="shadow__btn" onclick="mostrarFormulario('agregar')">
+                                <i class="fas fa-plus"></i> Agregar Socio
+                            </button>
+                        </div>
+                        
+                        <!-- Alertas para mostrar mensajes al usuario -->
+                        <div id="alerta-exito" class="alert alert-success" role="alert" style="display: none;">
+                            <i class="fas fa-check-circle"></i> Operación realizada con éxito.
+                        </div>
+                        <div id="alerta-error" class="alert alert-danger" role="alert" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i> Error al realizar la operación.
+                        </div>
+                        
+                        <!-- Formulario de socios -->
+                        <div id="formulario-socios" style="display: none;">
+                            <h3 id="formulario-titulo"></h3>
+                            <form id="form-socio" class="row g-3">
+                                <input type="hidden" id="id-socio" value="">
+                                <div class="col-md-6">
+                                    <label for="nombre-socio" class="form-label">Nombre:</label>
+                                    <input type="text" id="nombre-socio" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="apellido-socio" class="form-label">Apellido:</label>
+                                    <input type="text" id="apellido-socio" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email-socio" class="form-label">Email:</label>
+                                    <input type="email" id="email-socio" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telefono-socio" class="form-label">Teléfono:</label>
+                                    <input type="tel" id="telefono-socio" class="form-control">
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="shadow__btn">
+                                        <i class="fas fa-save"></i> Guardar
+                                    </button>
+                                    <button type="button" class="btn btn-secondary ms-2" onclick="ocultarFormulario()">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Tabla de socios -->
+                        <div class="table-responsive">
+                            <table class="table" id="tabla-socios">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Email</th>
+                                        <th>Teléfono</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="socios-list">
+                                    <!-- Aquí se cargarán dinámicamente los socios -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab de Actividades -->
+                <div class="tab-pane fade" id="actividades" role="tabpanel" aria-labelledby="actividades-tab">
+                    <div class="admin-section">
+                        <h2><i class="fas fa-calendar-alt"></i> Administración de Actividades</h2>
+                        <p>Aquí podrás gestionar las actividades del club.</p>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i> Esta sección está en desarrollo. Próximamente podrás administrar las actividades del club.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab de Noticias -->
+                <div class="tab-pane fade" id="noticias" role="tabpanel" aria-labelledby="noticias-tab">
+                    <div class="admin-section">
+                        <h2><i class="fas fa-newspaper"></i> Publicación de Noticias</h2>
+                        <p>Aquí podrás administrar las noticias del club.</p>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i> Esta sección está en desarrollo. Próximamente podrás administrar las noticias del club.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab de Configuración -->
+                <div class="tab-pane fade" id="config" role="tabpanel" aria-labelledby="config-tab">
+                    <div class="admin-section">
+                        <h2><i class="fas fa-cog"></i> Configuración del Sitio</h2>
+                        <p>Aquí podrás configurar diferentes aspectos del sitio web.</p>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i> Esta sección está en desarrollo. Próximamente podrás configurar el sitio web.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-home"></i> Volver a la página principal
+            </a>
+        </div>
+    </div>
+    
+    <!-- Footer Section -->
+    <footer>
+        <section class="footer_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>© 2023 - Chinese Shar Pei Club Argentino - Todos los derechos reservados</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Creador y diseñador de la página: 
+                            <a href="https://www.linkedin.com/in/pedro-rocha-25179921b/"><strong>Pedro Rocha</strong></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        // Datos iniciales de socios (simulando base de datos)
+        let socios = [
+            { id: 1, nombre: "Juan", apellido: "Pérez", email: "juan.perez@email.com", telefono: "11-2345-6789" },
+            { id: 2, nombre: "María", apellido: "Gómez", email: "maria.gomez@email.com", telefono: "11-9876-5432" }
+        ];
+        
+        // Variable para llevar el seguimiento del próximo ID
+        let nextId = 3;
+        
+        // Función para mostrar los socios en la tabla
+        function mostrarSocios() {
+            const sociosList = document.getElementById('socios-list');
+            sociosList.innerHTML = '';
+            
+            socios.forEach(socio => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${socio.id}</td>
+                    <td>${socio.nombre}</td>
+                    <td>${socio.apellido}</td>
+                    <td>${socio.email}</td>
+                    <td>${socio.telefono || '-'}</td>
+                    <td>
+                        <button class="btn btn-sm btn-info btn-action" onclick="editarSocio(${socio.id})">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-sm btn-danger btn-action" onclick="confirmarEliminarSocio(${socio.id})">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>
+                    </td>
+                `;
+                sociosList.appendChild(fila);
+            });
+        }
+        
+        // Función para mostrar el formulario (agregar o editar)
+        function mostrarFormulario(accion, id = null) {
+            const formularioSocios = document.getElementById('formulario-socios');
+            const formularioTitulo = document.getElementById('formulario-titulo');
+            const formSocio = document.getElementById('form-socio');
+            const idSocio = document.getElementById('id-socio');
+            
+            formSocio.reset();
+            
+            if (accion === 'agregar') {
+                formularioTitulo.innerHTML = '<i class="fas fa-user-plus"></i> Agregar Nuevo Socio';
+                idSocio.value = '';
+            } else if (accion === 'editar') {
+                formularioTitulo.innerHTML = '<i class="fas fa-user-edit"></i> Modificar Socio';
+                const socio = socios.find(s => s.id === id);
+                if (socio) {
+                    idSocio.value = socio.id;
+                    document.getElementById('nombre-socio').value = socio.nombre;
+                    document.getElementById('apellido-socio').value = socio.apellido;
+                    document.getElementById('email-socio').value = socio.email;
+                    document.getElementById('telefono-socio').value = socio.telefono || '';
+                }
+            }
+            
+            formularioSocios.style.display = 'block';
+            // Scroll hasta el formulario
+            formularioSocios.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Función para ocultar el formulario
+        function ocultarFormulario() {
+            document.getElementById('formulario-socios').style.display = 'none';
+        }
+        
+        // Función para editar un socio
+        function editarSocio(id) {
+            mostrarFormulario('editar', id);
+        }
+        
+        // Función para confirmar la eliminación de un socio
+        function confirmarEliminarSocio(id) {
+            const socio = socios.find(s => s.id === id);
+            if (confirm(`¿Estás seguro de que deseas eliminar al socio ${socio.nombre} ${socio.apellido}?`)) {
+                eliminarSocio(id);
+            }
+        }
+        
+        // Función para eliminar un socio
+        function eliminarSocio(id) {
+            const index = socios.findIndex(socio => socio.id === id);
+            if (index !== -1) {
+                socios.splice(index, 1);
+                mostrarSocios();
+                mostrarAlerta('exito', 'Socio eliminado correctamente');
+            } else {
+                mostrarAlerta('error', 'No se pudo eliminar el socio');
+            }
+        }
+        
+        // Función para mostrar alertas
+        function mostrarAlerta(tipo, mensaje) {
+            const alertaExito = document.getElementById('alerta-exito');
+            const alertaError = document.getElementById('alerta-error');
+            
+            // Ocultar ambas alertas
+            alertaExito.style.display = 'none';
+            alertaError.style.display = 'none';
+            
+            // Mostrar la alerta correspondiente
+            if (tipo === 'exito') {
+                alertaExito.innerHTML = `<i class="fas fa-check-circle"></i> ${mensaje}`;
+                alertaExito.style.display = 'block';
+            } else if (tipo === 'error') {
+                alertaError.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${mensaje}`;
+                alertaError.style.display = 'block';
+            }
+            
+            // Hacer que la alerta desaparezca después de 3 segundos
+            setTimeout(() => {
+                if (tipo === 'exito') {
+                    alertaExito.style.display = 'none';
+                } else if (tipo === 'error') {
+                    alertaError.style.display = 'none';
+                }
+            }, 3000);
+        }
+        
+        // Evento para manejar el envío del formulario
+        document.getElementById('form-socio').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const idSocio = document.getElementById('id-socio').value;
+            const nombre = document.getElementById('nombre-socio').value;
+            const apellido = document.getElementById('apellido-socio').value;
+            const email = document.getElementById('email-socio').value;
+            const telefono = document.getElementById('telefono-socio').value;
+            
+            if (idSocio) {
+                // Editar socio existente
+                const id = parseInt(idSocio);
+                const index = socios.findIndex(socio => socio.id === id);
+                
+                if (index !== -1) {
+                    socios[index] = { id, nombre, apellido, email, telefono };
+                    mostrarAlerta('exito', 'Socio actualizado correctamente');
+                } else {
+                    mostrarAlerta('error', 'No se pudo actualizar el socio');
+                }
+            } else {
+                // Agregar nuevo socio
+                const nuevoSocio = {
+                    id: nextId++,
+                    nombre,
+                    apellido,
+                    email,
+                    telefono
+                };
+                
+                socios.push(nuevoSocio);
+                mostrarAlerta('exito', 'Socio agregado correctamente');
+            }
+            
+            mostrarSocios();
+            ocultarFormulario();
+        });
+        
+        // Cargar los socios cuando la página se cargue
+        document.addEventListener('DOMContentLoaded', function() {
+            mostrarSocios();
+        });
+    </script>
+</body>
+</html>
